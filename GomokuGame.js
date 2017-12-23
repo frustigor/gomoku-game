@@ -109,7 +109,7 @@ export default class GomokuGame extends Events {
     let process = this.regretedProcess
     let start = this.gomoku.process.length
 
-    if (process && process.length < start + 1) {
+    if (!process || process.length < start + 1) {
       this.regretedProcess = null
       this.trigger('error', 'There is no recovery.')
       return
