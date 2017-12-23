@@ -1,0 +1,88 @@
+.gomoku-game-canvas {
+  width: 450px;
+  height: 450px;
+
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  .lattice {
+    width: 30px;
+    height: 30px;
+    float: left;
+    position: relative;
+
+    .particle {
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      
+      &.left-top {
+        width: 14px;
+        height: 14px;
+        border-right: solid 1px #000;
+        border-bottom: solid 1px #000;
+        left: 0;
+        top: 0;
+      }
+      &.right-bottom {
+        border-left: solid 1px #000;
+        border-top: solid 1px #000;
+        right: 0;
+        bottom: 0;
+      }
+    }
+
+    &.left {
+      .particle.left-top {
+        border-bottom: 0;
+      }
+    }
+    &.right {
+      .particle.right-bottom {
+        border-top: 0;
+      }
+    }
+    &.top {
+      .particle.left-top {
+        border-right: 0;
+      }
+    }
+    &.bottom {
+      .particle.right-bottom {
+        border-left: 0;
+      }
+    }
+
+    .chess {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+
+      &.black {
+        background: #000;
+      }
+      &.white {
+        background: #fff;
+        border: #000 solid 1px;
+      }
+    }
+
+    .point {
+      width: 5px;
+      height: 5px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: #000;
+    }
+  }
+}

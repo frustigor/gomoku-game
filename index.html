@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gomoku Game</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="game"></div>
+      <div id="aside">
+        <button id="regret">Regret</button>
+        <button id="redo">Redo</button>
+        <button id="restart" disabled>New Game</button>
+      </div>
+    </div>
+
+    <div id="createPlayer" class="dialog">
+      <div class="container">
+        Your name: <input>
+        <br>
+        <button>OK</button>
+      </div>
+    </div>
+
+    <div id="firstHand" class="dialog hidden">
+      <div class="container">
+        Do you want first hand? 
+        <br>
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+      </div>
+    </div>
+
+    <div id="message" class="dialog hidden">
+      <div class="container">
+        <div id="message-text"></div>
+        <button id="message-close">OK</button>
+      </div>
+    </div>
+    
+    <script src="index.js"></script>
+  </body>
+</html>

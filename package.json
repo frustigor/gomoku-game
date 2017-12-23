@@ -1,0 +1,16 @@
+{
+  "name": "gomoku-game",
+  "version": "1.0.0",
+  "description": "gomoku game demo",
+  "main": "GomokuGame.js",
+  "scripts": {
+    "start": "parcel index.html -p 3988"
+  },
+  "author": "tangshuang",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "node-sass": "^4.7.2",
+    "parcel-bundler": "^1.2.1"
+  }
+}
