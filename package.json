@@ -4,7 +4,8 @@
   "description": "gomoku game demo",
   "main": "GomokuGame.js",
   "scripts": {
-    "start": "parcel index.html -p 3988"
+    "start": "parcel index.html -p 3988",
+    "build": "parcel build index.html --public-url ./ --no-minify"
   },
   "author": "tangshuang",
   "license": "ISC",

@@ -14,6 +14,8 @@ npm start
 
 And open your browser to visit `https://localhost:3988`.
 
+Demo： http://www.tangshuang.net/trunk/gomoku/
+
 ## Implemenet
 
 该游戏的实现很简单，主要包含如下部分：
@@ -24,7 +26,7 @@ And open your browser to visit `https://localhost:3988`.
 
 **Gomoku游戏规则类**
 
-位于`core/Gomoku.js`, 这个类处理游戏的过程和规则，只实现了最简单的核心规则，控制着游戏的开始、着棋、胜负判定、结束几个过程，保存着棋盘、复盘信息、玩家实力引用、下一位玩家等信息。使用也很简单：
+位于`core/Gomoku.js`, 这个类处理游戏的过程和规则，只实现了最简单的核心规则，控制着游戏的开始、着棋、胜负判定、结束几个过程，保存着棋盘、复盘信息、玩家实例引用、下一位玩家等信息。使用也很简单：
 
 ```
 let gomoku = new Gomoku(playerA, playerB) // playerA为先手玩家
