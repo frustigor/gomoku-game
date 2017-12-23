@@ -63,6 +63,9 @@ export default class GomokuGame extends Events {
         this.process()
       }
     })
+    .catch(() => {
+      this.trigger('thinkingbreak', player)
+    })
   }
   end() {
     this.trigger('gameover', this.winner === this.player)
@@ -91,7 +94,9 @@ export default class GomokuGame extends Events {
     back(passedStep1)
     back(passedStep2)
     this.gomoku.process = process.filter(item => item !== passedStep1 && item !== passedStep2)
-    this.regretedProcess = process
+    if (!this.regretedProcess) {
+      this.regretedProcess = process
+    }
     this.process()
   }
   redo() {
@@ -99,15 +104,19 @@ export default class GomokuGame extends Events {
       this.trigger('error', 'It is not your turn, you can not undo regret now.')
       return
     }
-    if (!this.regretedProcess) {
+
+    let player = this.player
+    let process = this.regretedProcess
+    let start = this.gomoku.process.length
+
+    if (process && process.length < start + 1) {
+      this.regretedProcess = null
       this.trigger('error', 'There is no recovery.')
       return
     }
 
-    let player = this.player
-    let process = this.regretedProcess
-    let passedStep1 = process[process.length - 1]
-    let passedStep2 = process[process.length - 2]
+    let passedStep1 = process[start]
+    let passedStep2 = process[start + 1]
     let go = ({ x, y, player }) => {
       this.gomoku.chessboard[x][y] = player
       let isBlack = player === this.gomoku.players[0]
@@ -117,8 +126,7 @@ export default class GomokuGame extends Events {
     player.stopThinking()
     go(passedStep1)
     go(passedStep2)
-    this.gomoku.process = process
-    this.regretedProcess = null
+    this.gomoku.process = this.gomoku.process.concat([ passedStep1, passedStep2 ])
     this.process()
   }
   restart() {
